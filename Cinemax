@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CineMax - Tu portal de películas</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>CineMax 🎬</h1>
+    <input type="text" id="search" placeholder="Buscar película..." />
+  </header>
+
+  <section class="featured">
+    <h2>🎥 Películas destacadas</h2>
+    <div class="movie-grid">
+      <div class="movie-card">
+        <img src="https://via.placeholder.com/200x300" alt="Película 1" />
+        <h3>Película 1</h3>
+        <p>Acción | 2023</p>
+        <button>Ver trailer</button>
+      </div>
+      <div class="movie-card">
+        <img src="https://via.placeholder.com/200x300" alt="Película 2" />
+        <h3>Película 2</h3>
+        <p>Comedia | 2022</p>
+        <button>Ver trailer</button>
+      </div>
+      <!-- Más películas aquí -->
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 CineMax. Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #121212;
+  color: #fff;
+}
+
+header {
+  background-color: #1f1f1f;
+  padding: 20px;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2em;
+}
+
+#search {
+  margin-top: 10px;
+  padding: 10px;
+  width: 60%;
+  border-radius: 5px;
+  border: none;
+}
+
+.featured {
+  padding: 20px;
+}
+
+.movie-grid {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.movie-card {
+  background-color: #2a2a2a;
+  padding: 10px;
+  border-radius: 10px;
+  width: 200px;
+  text-align: center;
+}
+
+.movie-card img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+button {
+  margin-top: 10px;
+  padding: 8px 12px;
+  background-color: #e50914;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #1f1f1f;
+}
+
+document.getElementById('search').addEventListener('input', function () {
+  const query = this.value.toLowerCase();
+  const cards = document.querySelectorAll('.movie-card');
+  cards.forEach(card => {
+    const title = card.querySelector('h3').textContent.toLowerCase();
+    card.style.display = title.includes(query) ? 'block' : 'none';
+  });
+});
